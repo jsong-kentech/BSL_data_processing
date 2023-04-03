@@ -42,7 +42,8 @@ for i = 1:length(files)
         data_cycle(i,k).Q_ch = Q_ch;
         data_cycle(i,k).Q_dch = Q_dch;
         data_cycle(i,k).eff = Q_dch/Q_ch;
-
+        
+        % cycle capacity matrix
         capacity_chg(i,k) = Q_ch;
         capacity_dis(i,k) = Q_dch;
         end
