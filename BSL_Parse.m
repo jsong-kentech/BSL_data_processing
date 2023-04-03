@@ -4,7 +4,7 @@ clc; clear; close all;
 
 %% Interface
 
-data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\DCIR\AHC1-0.05C cell';
+data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\Formation\FC(Half)_11';
 % data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\Formation\FC(Half)_11';
 % data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\Formation\CHC_10';
 

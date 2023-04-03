@@ -3,7 +3,7 @@ clc; clear; close all;
 
 
 %% Interface
-data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\OCP\OCP0.01C_Anode Half cell(5)';
+data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\OCP\OCP0.05C_Full cell(half)(5)';
 %data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\Formation\FC(Half)_11';
 % data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\OCP\OCP0.01C_Cathode Half cell(5)';
 
@@ -39,6 +39,11 @@ for i = 1:length(files)
     
    data(step_ocv_chg).soc = data(step_ocv_chg).cumQ/data(step_ocv_chg).Q;
    data(step_ocv_dis).soc = 1-data(step_ocv_dis).cumQ/data(step_ocv_dis).Q;
+
+    % capacity matrix
+    capacity_chg(i,1) = data(step_ocv_chg).Q;
+    capacity_dis(i,1) = data(step_ocv_dis).Q;
+
 
     % plot
     color_mat=lines(3);

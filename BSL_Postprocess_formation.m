@@ -35,17 +35,17 @@ for i = 1:length(files)
         cycle_data = data([data.cycle]'==vec_cycle(k));
         
         if contains([cycle_data.type],'C') && contains([cycle_data.type],'D') 
-        Q_ch = cycle_data([cycle_data.type] =='C').Q;
-        Q_dch = cycle_data([cycle_data.type] =='D').Q;
+        Q_chg = cycle_data([cycle_data.type] =='C').Q;
+        Q_dis = cycle_data([cycle_data.type] =='D').Q;
 
         data_cycle(i,k).cycle = vec_cycle(k);
-        data_cycle(i,k).Q_ch = Q_ch;
-        data_cycle(i,k).Q_dch = Q_dch;
-        data_cycle(i,k).eff = Q_dch/Q_ch;
+        data_cycle(i,k).Q_chg = Q_chg;
+        data_cycle(i,k).Q_dis = Q_dis;
+        data_cycle(i,k).eff = Q_dis/Q_chg;
         
         % cycle capacity matrix
-        capacity_chg(i,k) = Q_ch;
-        capacity_dis(i,k) = Q_dch;
+        capacity_chg(i,k) = Q_chg;
+        capacity_dis(i,k) = Q_dis;
         end
     end
 
@@ -59,10 +59,10 @@ for i = 1:length(files)
         box on
         end
     yyaxis left
-    plot([data_cycle(i,:).cycle], [data_cycle(i,:).Q_ch],'o-',"Color",color_mat(1,:))
+    plot([data_cycle(i,:).cycle], [data_cycle(i,:).Q_chg],'o-',"Color",color_mat(1,:))
     axis([0 4 0 0.006])
 
-    plot([data_cycle(i,:).cycle], [data_cycle(i,:).Q_dch],'o-',"Color",color_mat(2,:))
+    plot([data_cycle(i,:).cycle], [data_cycle(i,:).Q_dis],'o-',"Color",color_mat(2,:))
     axis([0 4 0 0.006])
 
     yyaxis right
@@ -73,7 +73,7 @@ for i = 1:length(files)
     end
 
     % save output data
-    save_fullpath = [save_path slash files(i).name];
-    save(save_fullpath,'data','data_cycle')
+    % save_fullpath = [save_path slash files(i).name];
+    % save(save_fullpath,'data','data_cycle')
 
 end
