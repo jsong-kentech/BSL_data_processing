@@ -48,11 +48,9 @@ for i = 1:length(files)
 
    % stoichiometry for cathode and anode (not for fullcell)
    if id_cfa == 1 % cathode
-        data(step_ocv_chg).stoic = 1-(1-y1)*data(step_ocv_chg).soc;
-        data(step_ocv_dis).stoic = 1-(1-y1)*data(step_ocv_dis).soc; 
+        data(step_ocv_chg).stoic = 1-(1-y1)*data(step_ocv_chg).soc; 
    elseif id_cfa ==2 % anode
-        data(step_ocv_chg).stoic = data(step_ocv_chg).soc;
-        data(step_ocv_dis).stoic = data(step_ocv_dis).soc; 
+        data(step_ocv_)
    end
 
 
