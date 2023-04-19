@@ -4,8 +4,9 @@ clc; clear; close all;
 
 %% Interface
 
-data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\OCV\FCC_(5)_OCV_C100';
-
+data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\OCV\AHC_(5)_OCV_C20';
+% data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\Formation\FC(Half)_11';
+% data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\Formation\CHC_10';
 
 
 save_path = data_folder;
@@ -71,7 +72,7 @@ for i = 1:length(files)
     % plot for selected samples
     if ismember(sample_plot,i)
         figure
-        title(strjoin(strsplit(files(i).name,'_'),' '))
+        title(strjoinfiles(i).name)
         hold on
         plot(data1.t/3600,data1.V,'-')
         xlabel('time (hours)')
