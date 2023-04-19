@@ -6,11 +6,11 @@ clc; clear; close all;
 
 % data folder
 % data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\OCP\OCP0.05C_Full cell(half)(5)';
- data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\OCP\OCP0.01C_Cathode Half cell(5)';
+ data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\OCV\FC_(2)_OCV_C100';
  [save_folder,save_name] = fileparts(data_folder);
 
 % cathode, fullcell, or anode
-id_cfa = 1; % 1 for cathode, 2 for fullcell, 3 for anode, 0 for automatic (not yet implemented)
+id_cfa = 2; % 1 for cathode, 2 for fullcell, 3 for anode, 0 for automatic (not yet implemented)
 
 % OCV steps
     % chg/dis sub notation: with respect to the full cell operation
@@ -60,7 +60,7 @@ for i = 1:length(files)
         y_chg = data(step_ocv_chg).V;
         x_dis = data(step_ocv_dis).stoic;
         y_dis = data(step_ocv_dis).V;
-   elseif id_cfa == 3 % fullcell
+   elseif id_cfa == 2 % fullcell
         x_chg = data(step_ocv_chg).soc;
         y_chg = data(step_ocv_chg).V;
         x_dis = data(step_ocv_dis).soc;
@@ -78,7 +78,7 @@ for i = 1:length(files)
     
 
     % plot
-    color_mat=lines(3);
+    color_mat=lines(4);
     if i ==1
     figure
     end
@@ -105,8 +105,10 @@ OCV_golden.OCVdis = OCV_all(1,i_golden).OCVdis;
 
 
 % plot
+title_str = strjoin(strsplit(save_name,'_'),' ');
+title(title_str)
 plot(OCV_golden.OCVchg(:,1),OCV_golden.OCVchg(:,2),'--','color',color_mat(3,:))
-plot(OCV_golden.OCVdis(:,1),OCV_golden.OCVdis(:,2),'--','color',color_mat(3,:))
+plot(OCV_golden.OCVdis(:,1),OCV_golden.OCVdis(:,2),'--','color',color_mat(4,:))
 
 
 % save

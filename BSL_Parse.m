@@ -5,8 +5,7 @@ clc; clear; close all;
 %% Interface
 
 data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\OCV\FCC_(5)_OCV_C100';
-
-
+data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\0.01CWire_resistance_test';
 
 save_path = data_folder;
 I_1C = 0.00382; %[A]
