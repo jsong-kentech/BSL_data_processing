@@ -4,7 +4,7 @@ clc; clear; close all;
 
 %% Interface
 % data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\OCP\OCP0.05C_Cathode Half cell(5)';
-data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\Formation\FC(Half)_11';
+data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\Formation2\AHC2_(10)_Formation2';
 % data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\Formation\CHC_10';
 % data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\Formation\AHC_10';
 save_path = data_folder;
@@ -19,7 +19,7 @@ sample_plot =1;
 slash = filesep;
 files = dir([data_folder slash '*.mat']);
 
-for i = 1:length(files)
+for i =[1:6,9]% 1:length(files)
     fullpath_now = [data_folder slash files(i).name];% path for i-th file in the folder
     load(fullpath_now);
     

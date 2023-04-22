@@ -4,13 +4,12 @@ clc; clear; close all;
 
 %% Interface
 
-data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\OCV\FCC_(5)_OCV_C20';
-%data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\0.01CWire_resistance_test';
+data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\Formation2\AHC2_(10)_Formation2';
 
 save_path = data_folder;
 I_1C = 0.00382; %[A]
 n_hd = 14; % headline number used in 'readtable' option. WonA: 14, Maccor: 3.
-sample_plot = 2;
+sample_plot = [6,7,8,9,10];
 
 %% Engine
 slash = filesep;
@@ -29,7 +28,11 @@ for i = 1:length(files)
     data1.T = data_now.Var13;
 
      % datetime
-     data1.t = seconds(data1.t2);
+     if isduration(data1.t2(1))
+        data1.t = seconds(data1.t2);
+     else
+        data1.t = data1.t2;
+     end
 
      % absolute current
      data1.I_abs = abs(data1.I);
@@ -68,7 +71,7 @@ for i = 1:length(files)
 
 
     % plot for selected samples
-    if ismember(sample_plot,i)
+    if any(ismember(sample_plot,i))
         figure
         title(strjoin(strsplit(files(i).name,'_'),' '))
         hold on
