@@ -16,11 +16,10 @@ sample_plot =1;
 
 
 %% Engine
-slash = filesep;
-files = dir([data_folder slash '*.mat']);
+files = dir([data_folder filesep '*.mat']);
 
 for i =[1:6,9]% 1:length(files)
-    fullpath_now = [data_folder slash files(i).name];% path for i-th file in the folder
+    fullpath_now = [data_folder filesep files(i).name];% path for i-th file in the folder
     load(fullpath_now);
     
     for j = 1:length(data)
@@ -73,7 +72,7 @@ for i =[1:6,9]% 1:length(files)
     end
 
     % save output data
-    % save_fullpath = [save_path slash files(i).name];
+    % save_fullpath = [save_path filesep files(i).name];
     % save(save_fullpath,'data','data_cycle')
 
 end
