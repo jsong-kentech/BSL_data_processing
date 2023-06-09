@@ -1,12 +1,11 @@
 % BSL OCV Code
 clc; clear; close all;
 
-clc
 %% Interface
 
 % data folder
 % data_folder = 'C:\Users\jsong\Documents\MATLAB\Data\OCP\OCP0.05C_Full cell(half)(5)';
- data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\OCV\FCC_(5)_OCV_C100';
+ data_folder = 'G:\공유 드라이브\Battery Software Lab\Data\Hyundai_dataset\OCV\FCC_(5)_OCV_C100';
  [save_folder,save_name] = fileparts(data_folder);
 
 % cathode, fullcell, or anode
