@@ -1,7 +1,7 @@
 % BSL OCV Code
 clc; clear; close all;
 
-
+clc
 %% Interface
 
 % data folder
