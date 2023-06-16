@@ -7,17 +7,17 @@ clc
 
 data_folder = 'G:\공유 드라이브\Battery Software Lab\Data\Hyundai_dataset\GITT\AHC_(5)_GITT';
 
-% Split the path using the delimiter
-splitPath = split(data_folder, '\');
+% Split the path using the directory separator
+splitPath = split(data_folder, filesep);
 
 % Find the index of "Battery Software Lab"
 index = find(contains(splitPath, 'Battery Software Lab'));
 
-% Replace "Data" with "Processed_Data"
+% Replace the element right after "Battery Software Lab" with "Processed_Data"
 splitPath{index+1} = 'Processed_Data';
 
 % Create the new save_path
-save_path = strjoin(splitPath, '\');
+save_path = strjoin(splitPath, filesep);
 
 % Create the directory if it doesn't exist
 if ~exist(save_path, 'dir')
