@@ -1,6 +1,7 @@
 % BSL Parsing Code
 clc; clear; close all;
 
+clc
 
 %% Interface
 
