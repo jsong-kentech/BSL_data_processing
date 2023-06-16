@@ -1,7 +1,6 @@
 % BSL Parsing Code
 clc; clear; close all;
 
-clc
 
 %% Interface
 
@@ -10,11 +9,11 @@ data_folder = 'G:\공유 드라이브\Battery Software Lab\Data\Hyundai_dataset\
 % Split the path using the directory separator
 splitPath = split(data_folder, filesep);
 
-% Find the index of "Battery Software Lab"
-index = find(contains(splitPath, 'Battery Software Lab'));
+% Find the index of "Data" ( to be replaced)
+index = strcmp('Data',splitPath);
 
-% Replace the element right after "Battery Software Lab" with "Processed_Data"
-splitPath{index+1} = 'Processed_Data';
+% Replace "Data" with "Processed_Data"
+splitPath{index} = 'Processed_Data';
 
 % Create the new save_path
 save_path = strjoin(splitPath, filesep);
