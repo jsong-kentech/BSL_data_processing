@@ -4,7 +4,7 @@ clc; clear; close all;
 
 %% Interface
 
-data_folder = 'G:\공유 드라이브\Battery Software Lab\Data\Hyundai_dataset\GITT\AHC_(5)_GITT';
+data_folder = 'G:\공유 드라이브\Battery Software Lab\Data\Hyundai_dataset\Formation\AHC_(10)_Formation';
 
 % Split the path using the directory separator
 splitPath = split(data_folder, filesep);
