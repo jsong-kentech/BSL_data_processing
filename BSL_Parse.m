@@ -5,9 +5,25 @@ clc
 
 %% Interface
 
-data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\C_rate\HNE_AHC_(5)_C_rate';
+data_folder = 'G:\공유 드라이브\Battery Software Lab\Data\Hyundai_dataset\GITT\AHC_(5)_GITT';
 
-save_path = data_folder;
+% Split the path using the delimiter
+splitPath = split(data_folder, '\');
+
+% Find the index of "Battery Software Lab"
+index = find(contains(splitPath, 'Battery Software Lab'));
+
+% Replace "Data" with "Processed_Data"
+splitPath{index+1} = 'Processed_Data';
+
+% Create the new save_path
+save_path = strjoin(splitPath, '\');
+
+% Create the directory if it doesn't exist
+if ~exist(save_path, 'dir')
+   mkdir(save_path)
+end
+
 I_1C = 0.00477; %[A]
 n_hd = 14; % headline number used in 'readtable' option. WonA: 14, Maccor: 3.
 sample_plot = [5];
@@ -114,9 +130,6 @@ for i = 1:length(files)
     end
 
     % save output data
-    if ~isfolder(save_path)
-        mkdir(save_path)
-    end
     save_fullpath = [save_path slash files(i).name(1:end-4) '.mat'];
     save(save_fullpath,'data')
 
