@@ -9,10 +9,10 @@ data_folder = 'G:\공유 드라이브\Battery Software Lab\Data\Hyundai_dataset\
 % Split the path using the directory separator
 splitPath = split(data_folder, filesep);
 
-% Find the index of "Data" ( to be replaced)
-index = strcmp('Data',splitPath);
+% Find the index of "Data" (to be replaced)
+index = find(strcmp('Data',splitPath), 1);
 
-% Replace "Data" with "Processed_Data"
+% Replace the first "Data" with "Processed_Data"
 splitPath{index} = 'Processed_Data';
 
 % Create the new save_path
