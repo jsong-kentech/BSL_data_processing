@@ -14,8 +14,8 @@ clear; clc; close all;
 %np = 1; % 1 for CHC and FC, -1 for AHC
 
 
-data_folder = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\C_rate\HNE_AHC_(5)_C_rate';
-OCV_fullpath = 'G:\Shared drives\Battery Software Lab\Data\Hyundai_dataset\OCV\AHC_(5)_OCV_C100.mat';
+data_folder = 'G:\공유 드라이브\Battery Software Lab\Data\Hyundai_dataset\C_rate2\HNE_FCC_(6)_Crate2';
+OCV_fullpath = 'G:\공유 드라이브\Battery Software Lab\Data\Hyundai_dataset\OCV\FCC_(5)_OCV_C100.mat';
 np = -1; % 1 for CHC and FC, -1 for AHC
 
 

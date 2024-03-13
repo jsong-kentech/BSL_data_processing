@@ -4,44 +4,29 @@ clc; clear; close all;
 
 %% Interface
 
-data_folder = 'G:\공유 드라이브\BSL_Data2\Formation';
+data_folder = 'G:\Shared drives\EE6211_2024\Data\rOCV';
 
-% Split the path using the directory separator
-splitPath = split(data_folder, filesep);
 
-% Find the index of "Data" (to be replaced)
-index = find(strcmp('Data',splitPath), 1);
-
-% Replace the first "Data" with "Processed_Data"
-splitPath{index} = 'Processed_Data';
-
-% Create the new save_path
-save_path = strjoin(splitPath, filesep);
-
-% Create the directory if it doesn't exist
-if ~exist(save_path, 'dir')
-   mkdir(save_path)
-end
-
-I_1C = 0.00477; %[A]
-n_hd = 14; % headline number used in 'readtable' option. WonA: 14, Maccor: 3.
-sample_plot = [5];
+save_path = data_folder;
+I_1C = 55.5; %[A]
+n_hd = 1; % **PNE headline number used in 'readtable' option. WonA: 14, Maccor: 3.
+sample_plot = 1;
 
 %% Engine
 slash = filesep;
-files = dir([data_folder slash '*.txt']); % select only txt files (raw data)
+files = dir([data_folder slash '*.csv']); % select only txt files (raw data)
 
-for i = 1:length(files)
+for i = 1:1%length(files)
     fullpath_now = [data_folder slash files(i).name]; % path for i-th file in the folder
     data_now = readtable(fullpath_now,'FileType','text',...
                     'NumHeaderLines',n_hd,'readVariableNames',0); % load the data
-
-    data1.I = data_now.Var7;
+    % **PNE
+    data1.I = data_now.Var9;
     data1.V= data_now.Var8;
-    data1.t2 = data_now.Var2; % experiment time, format in duration
-    data1.t1 = data_now.Var4; % step time, format in duration
-    data1.cycle = data_now.Var3; 
-    data1.T = data_now.Var13;
+    data1.t2 = data_now.Var7; % experiment time, format in duration
+    data1.t1 = data_now.Var6; % step time, format in duration
+    data1.cycle = data_now.Var14; 
+    data1.T = data_now.Var21;
 
      % datetime
      if isduration(data1.t2(1))
@@ -88,7 +73,7 @@ for i = 1:length(files)
 
     % plot for selected samples
     if any(ismember(sample_plot,i))
-        figure
+        figure(1)
         title(strjoin(strsplit(files(i).name,'_'),' '))
         hold on
         plot(data1.t/3600,data1.V,'-')
@@ -120,15 +105,28 @@ for i = 1:length(files)
         data(i_step).steptime = data1.t1(range);
         data(i_step).T = data1.T(range);
         data(i_step).cycle = data1.cycle(range(1));
+        data(i_step).step = ones(size(data1.t(range)))*vec_step(i_step);
 
         % display progress
             if i_step> num_step/10*n
                  fprintf('%6.1f%%\n', round(i_step/num_step*100));
                  n = n+1;
             end
+
+            figure(2)
+            subplot(2,1,1)
+            hold on
+            plot(data(i_step).t,data(i_step).V)
+            subplot(2,1,2); hold on
+            plot(data(i_step).t,data(i_step).step)
+
+
     end
 
     % save output data
+    if ~isfolder(save_path)
+        mkdir(save_path)
+    end
     save_fullpath = [save_path slash files(i).name(1:end-4) '.mat'];
     save(save_fullpath,'data')
 
