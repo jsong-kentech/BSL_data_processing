@@ -100,7 +100,7 @@ for i = 1:length(cellnum_list)
            data(l).Q  = [];
            data(l).cumQ = [];
            data(l).soc =[];
-           data(l).OCVflag = [];
+           data(l).OCVflag = 0;
            data(l).Iavg = mean(data(l).I);  
         
            %charge OCVflag
@@ -113,26 +113,21 @@ for i = 1:length(cellnum_list)
        
            end
 
+           if  size(data(l).t) > 2
            %cumQ,Q,soc생성
-           if data(l).OCVflag ==1 
            data(l).Q = trapz(data(l).t,data(l).I)/3600;  %[Ah]
            data(l).cumQ = cumtrapz(data(l).t,data(l).I)/3600; %[Ah]
            data(l).soc = data(l).cumQ/data(l).Q;
-
-           elseif data(l).OCVflag ==2
+           
+           if data(l).OCVflag ==2 
+           
            data(l).Q = trapz(data(l).t,data(l).I)/3600;  %[Ah]
            data(l).cumQ = cumtrapz(data(l).t,data(l).I)/3600; %[Ah]    
            data(l).soc = 1-abs(data(l).cumQ)/abs(data(l).Q);
 
-           else data(l).soc = [];
-
+      
            end
-
-           %t,cycle 이어주기
-           data(l).t = data(l).t + t_add;
-           data(l).cycle = data(l).cycle + cycle_add;
-
-       end
+           end
 
        t_add = data(end).t(end);
        cycle_add = data(end).cycle;
