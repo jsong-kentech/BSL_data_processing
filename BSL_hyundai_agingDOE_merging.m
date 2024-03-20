@@ -153,7 +153,8 @@ for i = 1:length(cellnum_list)
         save_filename = regexprep(cellfile_list_sorted(end).name,'Aging*.','Merged');
     end
     save_path = fullfile([folder_path filesep save_filename]);
-    save(save_path, 'data_merged')
+    save(save_path, 'data_merged', '-v7.3')
+
 
      fprintf('Merged data for cell %d saved to %s\n', cellnum_list(i), save_path);
 
