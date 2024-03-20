@@ -89,6 +89,7 @@ for n = 1:length(cellnum_list)
                 
 end
 
+% OCV idx에 해당하는 merged data 추출
 idx = find([merged_data.OCVflag] == 2);
 idx(2) = [];
 
