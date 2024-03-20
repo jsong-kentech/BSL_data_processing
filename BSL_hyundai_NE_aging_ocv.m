@@ -85,10 +85,21 @@ for n = 1:length(cellnum_list)
         end
                 
     end
-      data_merged = [data_merged; data];      
+      merged_data = [merged_data; data];      
                 
 end
 
-save_path = fullfile(folder_path, 'OCV_Merged');
-save(save_path,'data_merged'); 
+idx = find([merged_data.OCVflag] == 2);
+idx(2) = [];
 
+for j = 1:length(idx)   
+
+     start_idx = max(1, idx(j) - 5);
+     final_idx = min(length(merged_data), idx(j) + 1);
+     data_merged = [data_merged; merged_data(start_idx:final_idx)];
+
+end
+
+
+save_path = fullfile(folder_path, 'OCV_Merged');
+save(save_path,'data_merged');
