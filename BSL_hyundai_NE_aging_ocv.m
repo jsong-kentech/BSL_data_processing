@@ -66,7 +66,7 @@ for n = 1:length(cellnum_list)
 
             end
 
-             if size(data(l).t) > 2
+             if length(data(l).t) > 2
                 %cumQ,Q,soc생성
                 data(l).Q = trapz(data(l).t,data(l).I)/3600;  %[Ah]
                 data(l).cumQ = cumtrapz(data(l).t,data(l).I)/3600; %[Ah]
