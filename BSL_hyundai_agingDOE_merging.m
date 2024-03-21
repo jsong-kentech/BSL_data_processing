@@ -129,16 +129,16 @@ for i = 1:length(cellnum_list)
            end
            end
 
+       &t,cycle이어주기
        t_add = data(end).t(end);
        cycle_add = data(end).cycle;
-
-       % continuing cycle
+       end
+      
 
        % Merge
        data_merged = [data_merged; data];
        
-
-   end
+end
 
    % confirm continuing time and cycle
 %    figure(1)
@@ -159,6 +159,5 @@ for i = 1:length(cellnum_list)
      fprintf('Merged data for cell %d saved to %s\n', cellnum_list(i), save_path);
 
 
-end
 end
 end
