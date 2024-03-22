@@ -102,5 +102,5 @@ for j = 1:length(idx)
 end
 
 
-save_path = fullfile(folder_path, 'OCV_Merged');
+save_path = fullfile(folder_path, 'NE_OCV_Merged');
 save(save_path,'data_merged');
