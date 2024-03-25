@@ -24,7 +24,7 @@ t_add = 0;
 cycle_add = 0;
 
 for n = 1:length(cellnum_list)
-   
+    
     % 각 셀에 해당하는 파일리스트
     cellfile_list = files([files.cellnum] == cellnum_list(n));
     
@@ -87,8 +87,7 @@ for n = 1:length(cellnum_list)
         end
                 
     end
-     t_add = data(end).t(end);
-     cycle_add = data(end).cycle;
+
       merged_data = [merged_data; data];   
       
                 
