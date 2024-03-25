@@ -128,11 +128,11 @@ for i = 1:length(cellnum_list)
       
            end
            end
-
+        end
        &t,cycle이어주기
        t_add = data(end).t(end);
        cycle_add = data(end).cycle;
-       end
+      
       
 
        % Merge
