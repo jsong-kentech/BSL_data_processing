@@ -125,19 +125,22 @@ for i = 1:length(cellnum_list)
            data(l).cumQ = cumtrapz(data(l).t,data(l).I)/3600; %[Ah]    
            data(l).soc = 1-abs(data(l).cumQ)/abs(data(l).Q);
 
+           end
+           end
+
+          data(l).t = data(l).t + t_add;
+          data(l).cycle = data(l).cycle + cycle_add;
       
-           end
-           end
-        end
-       &t,cycle이어주기
+    end
+      
+       %t,cycle이어주기
        t_add = data(end).t(end);
        cycle_add = data(end).cycle;
-      
       
 
        % Merge
        data_merged = [data_merged; data];
-       
+   end    
 end
 
    % confirm continuing time and cycle
@@ -158,6 +161,4 @@ end
 
      fprintf('Merged data for cell %d saved to %s\n', cellnum_list(i), save_path);
 
-
-end
 end
