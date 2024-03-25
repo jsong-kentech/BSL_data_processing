@@ -20,6 +20,8 @@ Vmin = 2.5; %[V]
 Vmax = 4.2;  %[V]
 cutoff_min = -0.05; %[C]
 cutoff_max = 0.05;  %[C]
+t_add = 0;
+cycle_add = 0;
 
 for n = 1:length(cellnum_list)
    
@@ -85,7 +87,10 @@ for n = 1:length(cellnum_list)
         end
                 
     end
-      merged_data = [merged_data; data];      
+     t_add = data(end).t(end);
+     cycle_add = data(end).cycle;
+      merged_data = [merged_data; data];   
+      
                 
 end
 
