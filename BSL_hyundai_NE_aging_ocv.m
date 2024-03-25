@@ -14,14 +14,14 @@ end
 % 폴더내 셀넘버의 리스트 만들기
 cellnum_list = unique([files.cellnum]);
 
-data_merged = [];
+merged_data = [];
 I_1C = 55.6; %[A]
 Vmin = 2.5; %[V]
 Vmax = 4.2;  %[V]
 cutoff_min = -0.05; %[C]
 cutoff_max = 0.05;  %[C]
 t_add = 0;
-cycle_add = 0;
+cycle = [1 400 600 800 1000];
 
 for n = 1:length(cellnum_list)
     
@@ -83,17 +83,20 @@ for n = 1:length(cellnum_list)
                 end
                  
              end             
-          
+            data(l).t = data(l).t + t_add;
+            data(l).cycle = cycle(n);           
         end
-                
-    end
-
-      merged_data = [merged_data; data];   
+                 
+       %t이어주기
+       t_add = data(end).t(end);
+       %Merge
+       merged_data = [merged_data; data];   
       
-                
+   end          
 end
 
 % OCV 인덱스에 해당하는 merged data 추출
+data_merged = [];
 idx = find([merged_data.OCVflag] == 2);
 idx(2) = [];
 
