@@ -141,7 +141,7 @@ for i = 1:length(cellnum_list)
        % Merge
        data_merged = [data_merged; data];
    end    
-end
+
 
    % confirm continuing time and cycle
 %    figure(1)
@@ -161,4 +161,5 @@ end
 
      fprintf('Merged data for cell %d saved to %s\n', cellnum_list(i), save_path);
 
+end
 end
