@@ -52,11 +52,12 @@ for n = 1:length(cellnum_list)
         data = data_now.data;
        
         for l = 1:length(data)
-            data(l).Q  = [];
-            data(l).cumQ = [];
-            data(l).soc =[];
+            data(l).Q  = 0;
+            data(l).cumQ = 0;
+            data(l).soc =0;
             data(l).OCVflag = 0;
             data(l).Iavg = mean(data(l).I);  
+            data(l).T = 25;
 
             % charge OCVflag
             if abs(Vmax - data(l).V(end)) < 10e-3 && abs(cutoff_max - data(l).Iavg/I_1C) < 10e-2 && data(l+2).type == 'D'
